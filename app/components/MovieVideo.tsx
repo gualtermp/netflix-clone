@@ -39,7 +39,7 @@ export default async function MovieVideo() {
           {movieData?.overview}
         </p>
         <div className="flex gap-x-3 mt-4">
-          <Button> See more</Button>
+          <Button> See more </Button>
           <Button> Learn more </Button>
         </div>
       </div>
