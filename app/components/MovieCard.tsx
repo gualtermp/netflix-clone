@@ -1,5 +1,9 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { HeartIcon, PlayCircle } from "lucide-react";
+import PlayVideoModal from "./PlayVideoModal";
+import { useState } from "react";
 
 type MovieCard = {
   title: string;
@@ -24,9 +28,11 @@ export function MovieCard({
   age,
   time,
 }: MovieCard) {
+  const [state, changeState] = useState<boolean>(false);
+
   return (
     <>
-      <button className="-mt-14">
+      <button onClick={() => changeState(true)} className="-mt-14">
         <PlayCircle className="h-20 w-20" />
       </button>
       <div className="right-5 top-5 absolute z-10">
@@ -57,6 +63,14 @@ export function MovieCard({
           {overview}
         </p>
       </div>
+      <PlayVideoModal
+        youtubeURL={youtubeURL}
+        key={movieId}
+        title={title}
+        overview={overview}
+        state={state}
+        changeState={changeState}
+      />
     </>
   );
 }
